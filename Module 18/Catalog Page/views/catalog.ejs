@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>My Catalog</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        <script>
+            var tmp ;
+function edit(i) {
+    document.getElementById(i).innerHTML += '<br>' + '<br>' + '<input type = "text" id = "name" name = "title" placeholder="title" required/>' + '<br>' + '<br>';
+    document.getElementById(i).innerHTML += '<input type = "text" name = "description" id = "description" placeholder="description" required/>' + '<br>'+ '<br>';
+    document.getElementById(i).innerHTML += '<input type = "text" name = "quantity" id = "quantity" placeholder="quantity" required/>' + '<br>'+ '<br>';
+    document.getElementById(i).innerHTML += '<button type="submit" onClick = fun('+i+')>submit</button>';
+    };
+
+function fun(i) {
+    var name = document.getElementById("name").value;
+    var description = document.getElementById("description").value;
+    var quantity = document.getElementById("quantity").value;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if(this.readyState == 4 && (this.status == 200 || this.status==304)) {
+        tmp=this.responseText;
+        }
+    };
+
+    xhttp.open("GET", "/edit/" + i + "-" + name + "-" + description + "-" + quantity, false);
+    xhttp.send();
+    location.reload();                     
+};
+function delete_(i) {
+  
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if(this.readyState == 4 && (this.status == 200 || this.status==304)) {
+        tmp=this.responseText;
+      }
+  };
+
+  xhttp.open("GET", "/delete/" + i , false);
+  xhttp.send();
+  location.reload();                     
+};
+        </script>
+    </head>
+    <body style="text-align:center">
+        <h1>My Catalog</h1>
+        <% for (var i = 0; i < catalogs.length; i++) { %>
+            <div id = <%=i%>>
+            <p><b>Title:</b> <%=catalogs[i].title %></p>
+            <p><b>Description:</b> <%=catalogs[i].description %></p>
+            <img src= "/<%=catalogs[i].image %>" height= "150">
+            <p><b>Quantity:</b> <%=catalogs[i].quantity %></p>
+            <button type = "button" class = "btn btn-primary" onClick = 'delete_(<%=i%>)'>Delete</button>
+            <button type = "button" class = "btn btn-primary" onClick = 'edit(<%=i%>)' >Edit</button>
+            </div>
+            <hr>
+    
+        <%} %>
+    </body>
+</html>
