@@ -1,0 +1,57 @@
+<div class="container">
+    <h1 id = "first">Create Account</h1>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" class="form-control" id="firstname" required  [(ngModel)]="firstname" name="firstname">
+      </div>
+  
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" id="lastname" required  [(ngModel)]="lastname" name="lastname">
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <i class="fa fa-key icon"></i>
+        <input type="password" class="form-control" id="password" required  [(ngModel)]="password" name="password">
+        <!-- <input type="checkbox" onclick="myFunction()">Show Password -->
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmpassword">Confirm Password</label>
+        <i class="fa fa-key icon"></i>
+        <input type="password" class="form-control" id="Password" required  [(ngModel)]="confirmpassword" name="confirmpassword">
+      </div>
+  
+      <div class = "form-group">
+        <label for = "username">Username</label>
+        <i class="fa fa-user icon"></i>
+        <input type = "text" class = "form-control" id = "username" required [(ngModel)] = "username" name="username">
+        </div>
+      
+      <div class = "form-group">
+        <label for = "mobile">Mobile No:</label>
+        <input type = "number" class = "form-control" id = "mobile" required [(ngModel)] = "mobile" name="mobile">
+      </div>
+  
+      <div class = "form-group">
+        <label for = "email">Email id</label>
+        <i class="fa fa-envelope icon"></i>
+        <input type = "text" class = "form-control" id = "mail" required [(ngModel)] = "mail" name="mail">
+        
+        
+      </div>
+  
+      <button type="submit" class="btn btn-success" (click)="checkValid()" [disabled]="!form.form.valid">Submit</button>
+    </form>
+  
+  
+  <!-- <div [hidden]="!submitted">
+    <h4>SUCCESSFULLY REGISTERED</h4>
+    <a routerLink="/login">Click here to login</a>
+  </div>
+  <p>{{create}}</p> -->
+  </div>
+    
+  
