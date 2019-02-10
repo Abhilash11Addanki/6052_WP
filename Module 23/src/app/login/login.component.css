@@ -1,0 +1,20 @@
+/*.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; 
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; 
+  }
+  */
+
+  #second{
+    text-align: center;
+  }
+  span.psw {
+    display: block;
+    float: none;
+ }
+ span.psw {
+  float: right;
+  padding-top: 16px;
+}
